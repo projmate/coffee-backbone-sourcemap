@@ -1,0 +1,65 @@
+#!/usr/bin/env coffee
+
+Fs = require('fs')
+Path = require('path')
+
+{SourceMapGenerator, SourceMapConsumer, SourceNode:Node} = require("source-map")
+
+`
+String.prototype.regexIndexOf = function(regex, startpos) {
+    var indexOf = this.substring(startpos || 0).search(regex);
+    return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
+}
+`
+
+SourceMap =
+
+  createGenerator: (file, sourceRoot) ->
+    new SourceMapGenerator({file, sourceRoot})
+
+  loadFile: (file) ->
+   content = Fs.readFileSync(file, "utf8")
+   new SourceMapConsumer(content)
+
+  rebase: (generator, map, offsetLine) ->
+    consumer = new SourceMapConsumer(map)
+    consumer.eachMapping (item) ->
+      generator.addMapping
+        source: item.source
+        generated: {line: item.generatedLine + offsetLine, column: item.generatedColumn}
+        original: {line: item.originalLine, column: item.originalColumn}
+        name: item.name
+
+  dump: (map, max=Number.MAX_VALUE) ->
+    cons = new SourceMapConsumer(map)
+    i = 0
+    cons.eachMapping (item) ->
+      console.log(item) if i++ < max
+
+  # Interlace sourceFile statements with generated statemetns
+  interlace: (sourceFile, mapFile) ->
+    map = SourceMap.loadFile(mapFile)
+    generatedFile = Path.resolve(Path.join(Path.dirname(mapFile), map.file))
+    mapLines = Fs.readFileSync(generatedFile, "utf8").split("\n")
+
+    lines = Fs.readFileSync(sourceFile, "utf8").split("\n")
+
+    if map.sourceRoot
+      basename = sourceFile
+    else
+      basename = Path.basename(sourceFile)
+    #console.log "basename", basename
+
+    for line, l in lines
+      col = line.regexIndexOf(/\S/)
+      console.log line
+      if col > -1
+        generated = map.generatedPositionFor(source: basename, line: l + 1, column: col + 1)
+        #console.log "generated", generated
+        #console.log "//[#{l+1}, #{col+1}] "+mapLines[generated.line - 1]
+        console.log "#=> "+mapLines[generated.line - 1].trim()
+
+SourceMap.interlace "src/account.coffee", "src/app.map"
+
+
+# vim set filetype=coffee :
