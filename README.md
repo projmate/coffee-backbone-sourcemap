@@ -30,9 +30,15 @@ The project is several weekends of effort and the CLI is already useful.
         cd coffee-backbone-sourcemap
         pm run app.js --serve src --watch
 
-*   To build production files
+*   Browse `index.html` locally.
+
+        http://local.projmate.com:1080
+        https://local.projmate.com:1443
+
+*   To build and browse production files
 
         pm run dist -e production
+        pm serve dist
 
 
 ## Debugging
