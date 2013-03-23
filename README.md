@@ -40,4 +40,6 @@ The project is early but the CLI is already useful.
 Chrome's source map support seems hit-and-miss. Debugging works great in
 WebStorm. Set breakpoints then debug `src/index.html` by right clicking it.
 
+I normally build outside of the `src` directory but source map support among
+browsers and IDEs is finicky. It will get better.
 
