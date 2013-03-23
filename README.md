@@ -8,8 +8,8 @@ Debug your CoffeeScript templates and source! What's inside?
 
 
 More documentation is forthcoming for Projmate, which is a GUI project editor
-based on my likes/dislikes about Jake, Grunt and deploying production sites.
-The project is early but the CLI is already useful.
+based on likes/dislikes about Jake, Grunt and deploying production sites.
+The project is several weekends of effort and the CLI is already useful.
 
 * Builds are based on environments (development, test, production)
 * Simple filters and pipelines for asset processing
@@ -19,7 +19,7 @@ The project is early but the CLI is already useful.
 
 *   Install Projmate build tool
 
-        npm install projmate@0.1.0-dev
+        npm install projmate@0.1.0-dev -g
 
 *   Clone the project
 
@@ -40,6 +40,6 @@ The project is early but the CLI is already useful.
 Chrome's source map support seems hit-and-miss. Debugging works great in
 WebStorm. Set breakpoints then debug `src/index.html` by right clicking it.
 
-I normally build outside of the `src` directory but source map support among
-browsers and IDEs is finicky. It will get better.
-
+Normally builds are built outside of the `src` directory but source map
+support among browsers and IDEs is finicky. The workaround is to build
+the generated app.js file into `src` directory.
