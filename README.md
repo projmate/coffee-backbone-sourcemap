@@ -19,7 +19,7 @@ The project is several weekends of effort and the CLI is already useful.
 
 *   Install Projmate build tool
 
-        npm install projmate@0.1.0-dev -g
+        npm install projmate-cli@0.1.0-dev -g
 
 *   Clone the project
 
