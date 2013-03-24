@@ -15,8 +15,7 @@ The project is several weekends of effort and the CLI is already useful.
 * Builds are based on environments (development, test, production)
 * Simple filters and pipelines for asset processing
 
-
-## Instructions
+## Installation
 
 *   Install Projmate build tool
 
