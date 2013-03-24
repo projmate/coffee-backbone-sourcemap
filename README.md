@@ -7,13 +7,16 @@ Projmate CoffeeScript and Backbone example debuggable through source maps.
 * Less CSS
 * DustJs files (layouts, partials)
 * Generates static assets, no middleware needed
+* Runs on Linux, Mac and Windows
 
 More documentation is forthcoming for Projmate, which is a GUI project editor
-based on likes/dislikes about Jake, Grunt and deploying production sites.
-The project is several weekends of effort and the CLI is already useful.
+based on likes/dislikes of tools such as Jake, Grunt and my experience deploying
+production sites. The project is several weekends of effort and the CLI is
+already useful. All the magic for this project happens in the [Projfile](projfile.coffee).
 
 * Builds are based on environments (development, test, production)
 * Simple filters and pipelines for asset processing
+* An enhanced, cross-platform shell library based on ShellJS.
 
 ## Installation
 
