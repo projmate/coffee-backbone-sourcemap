@@ -25,7 +25,7 @@ The project is several weekends of effort and the CLI is already useful.
 
         git clone git://github.com/projmate/coffee-backbone-sourcemap.git
 
-*   Serve and watch files in development mode.
+*   Serve and watch files, then debug in the browser
 
         cd coffee-backbone-sourcemap
         pm run app.js --serve src --watch
@@ -43,8 +43,8 @@ The project is several weekends of effort and the CLI is already useful.
 
 ## Debugging
 
-Chrome's source map support seems hit-and-miss. Debugging works great in
-WebStorm. Set breakpoints then debug `src/index.html` by right clicking it.
+As of this writing, Chrome 26.0.1410.40 beta works well with wource maps.
+the stable version does not stop on breakpoints.
 
 Normally builds are built outside of the `src` directory but source map
 support among browsers and IDEs is finicky. The workaround is to build
