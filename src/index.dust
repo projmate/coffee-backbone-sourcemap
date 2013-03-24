@@ -1,0 +1,18 @@
+{>_layout/}
+
+{<page}
+  <div id="app-wrapper">
+  </div>
+{/page}
+
+
+{<pageScripts}
+  <script src="js/app.js" type="text/javascript"></script>
+  <script>
+    $(function() {
+      var app = require('app');
+      app.run();
+    });
+  </script>
+{/pageScripts}
+

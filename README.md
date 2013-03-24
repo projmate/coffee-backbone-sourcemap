@@ -1,11 +1,12 @@
 # coffee-backbone-sourcemap
 
-Projmate CoffeeScript and Backbone example with support for source maps.
-Debug your CoffeeScript templates and source! What's inside?
+Projmate CoffeeScript and Backbone example debuggable through source maps.
 
-* CommonJS simplicity
-* Debuggable CoffeeScript everywhere
-
+* CommonJS in the browser
+* CoffeeScript template and scripts
+* Less CSS
+* DustJs files (layouts, partials)
+* Generates static assets, no middleware needed
 
 More documentation is forthcoming for Projmate, which is a GUI project editor
 based on likes/dislikes about Jake, Grunt and deploying production sites.
@@ -25,40 +26,30 @@ The project is several weekends of effort and the CLI is already useful.
 
         git clone git://github.com/projmate/coffee-backbone-sourcemap.git
 
-*   Serve and watch files, then debug in the browser
-
-        cd coffee-backbone-sourcemap
-        pm run app.js --serve src --watch
-
-*   Browse `index.html` locally.
-
-        http://local.projmate.com:1080
-        https://local.projmate.com:1443
-
-*   To build and browse production files
-
-        pm run dist -e production
-        pm serve dist
-
 
 ## Debugging
 
-As of this writing, Chrome 26.0.1410.40 beta works well with wource maps.
-the stable version does not stop on breakpoints.
+As of this writing, Chrome 26.0.1410.40 beta works well with source maps.
+The stable version does not reliably stop on breakpoints.
 
 *   From terminal
 
-        pm run app.js --serve src --watch
+        cd coffee-backbone-sourcemap
+        pm run all --serve --watch
 
-*   Browse [http://local.projmate.com:1080]() which is local
+*   Browse [http://local.projmate.com:1080/dist](http://local.projmate.com:1080/dist) which is local.
 
 *   Open developer tools (Ctrl+Shift+I or Cmd+Opt+I) -> Sources -> Sources
 
-*   Set break points in coffee files
+*   Set breakpoints in coffee files
 
 *   Refresh the page (Ctrl+r or Cmd+r) and voila!
 
 
-Normally builds are built outside of the `src` directory but source map
-support among browsers and IDEs is finicky. The workaround is to build
-the generated app.js file into `src` directory.
+## Production Assets
+
+*   To build and browse production files (minified with headers). Since most
+    high performance servers like nginx gzip assets, no compression filter is
+    used.
+
+        pm run all -e production --serve
