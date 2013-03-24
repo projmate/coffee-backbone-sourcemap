@@ -46,6 +46,19 @@ The project is several weekends of effort and the CLI is already useful.
 As of this writing, Chrome 26.0.1410.40 beta works well with wource maps.
 the stable version does not stop on breakpoints.
 
+*   From terminal
+
+        pm run app.js --serve src --watch
+
+*   Browse [http://local.projmate.com:1080]() which is local
+
+*   Open developer tools (Ctrl+Shift+I or Cmd+Opt+I) -> Sources -> Sources
+
+*   Set break points in coffee files
+
+*   Refresh the page (Ctrl+r or Cmd+r) and voila!
+
+
 Normally builds are built outside of the `src` directory but source map
 support among browsers and IDEs is finicky. The workaround is to build
 the generated app.js file into `src` directory.
