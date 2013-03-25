@@ -24,7 +24,7 @@ already useful. Much of this project's magic happens in [Projfile](Projfile.coff
 
 *   Install Projmate build tool
 
-        npm install projmate-cli@0.1.0-dev -g
+        npm install -g projmate-cli@0.1.0-dev
 
 *   Clone the project
 
@@ -59,3 +59,11 @@ need to fix their source map integration.
     used.
 
         pm run all -e production --serve
+
+
+## Having Issues?
+
+It's probably because I am pointing you the edge version of Projmate CLI.
+I will lock down an alpha version soon. Make sure you have the latest.
+
+    npm install -g projmate-cli@0.1.0-dev
