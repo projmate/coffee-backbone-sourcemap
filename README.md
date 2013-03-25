@@ -12,7 +12,7 @@ Projmate CoffeeScript and Backbone example debuggable through source maps.
 More documentation is forthcoming for Projmate, which is a GUI project editor
 based on likes/dislikes of tools such as Jake, Grunt and my experience deploying
 production sites. The project is several weekends of effort and the CLI is
-already useful. Much of this project's magic happens in [Projfile](projfile.coffee).
+already useful. Much of this project's magic happens in [Projfile](Projfile.coffee).
 
 * Builds are based on environments (development, test, production)
 * Simple filters and pipelines for asset processing
