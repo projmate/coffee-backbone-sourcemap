@@ -19,8 +19,6 @@ exports.project = (pm) ->
     description: "Creates app.js CommonJS module from src/app_js"
     files:
       include: ["src/js/app_js/**/*.coffee", "src/js/app_js/**/*.js"]
-
-    # Use this for Chrome
     development: [
       # sourceMap is on by default
       f.coffee(bare: true)
@@ -41,9 +39,8 @@ exports.project = (pm) ->
   stylesheets:
     desc: "Compile less files"
     files:
-      include: "src/css/style.less"       # only compile this
-      watch: ["src/css/**/*.less"]          # rebuild on any file change
-
+      include: "src/css/style.less"         # only compile this stylesheet
+      watch: ["src/css/**/*.less"]          # rebuild on any file change though
     dev: [
       f.less
       f.writeFile(distDir)
@@ -61,6 +58,11 @@ exports.project = (pm) ->
     development: [
       f.template(engine: 'dust', views: "src")
       f.beautify
+      f.liveReload
+      f.writeFile(distDir)
+    ]
+    production: [
+      f.template(engine: 'dust', views: "src")
       f.writeFile(distDir)
     ]
 

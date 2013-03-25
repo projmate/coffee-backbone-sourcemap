@@ -1,8 +1,9 @@
 Funcd = require('./funcd')
 
 class View extends Backbone.View
+
   renderTemplate: (path, args...) ->
-    template = require("app/templates/"+path)
+    template = require(path)
     Funcd.render(template, args...)
 
   serialize: ->

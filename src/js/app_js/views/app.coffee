@@ -2,7 +2,7 @@ View = require("../lib/view")
 
 class AppView extends View
   id: "app"
-  template: "app"
+  template: "../templates/app"
 
   constructor: ->
     super

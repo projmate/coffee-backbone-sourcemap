@@ -17,7 +17,8 @@ already useful. Much of this project's magic happens in [Projfile](projfile.coff
 * Builds are based on environments (development, test, production)
 * Simple filters and pipelines for asset processing
 * An enhanced, cross-platform shell library based on ShellJS
-* Watch is built into every task
+* Watch is built-in
+* LiveReload is built-in
 
 ## Installation
 
