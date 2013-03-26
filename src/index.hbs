@@ -1,12 +1,12 @@
-{>_layout/}
+{{!< _layout}}
 
-{<page}
+{{#contentFor "page"}}
   <div id="app-wrapper">
   </div>
-{/page}
+{{/contentFor}}
 
 
-{<pageScripts}
+{{#contentFor "pageScripts"}}
   <script src="js/app.js" type="text/javascript"></script>
   <script>
     $(function() {
@@ -14,5 +14,5 @@
       app.run();
     });
   </script>
-{/pageScripts}
+{{/contentFor}}
 

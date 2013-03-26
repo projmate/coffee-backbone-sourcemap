@@ -53,16 +53,15 @@ exports.project = (pm) ->
 
 
   pages:
-    desc: "Compiles DustJs pages to HTML"
-    files: ["src/**/*.dust", "!src/**/_*.dust"]
+    desc: "Compiles Handlebars templates to HTML"
+    files: ["src/**/*.hbs", "!src/**/_*.hbs"]
     development: [
-      f.template(engine: 'dust', views: "src")
-      f.beautify
+      f.handlebars(root: "src")
       f.liveReload
       f.writeFile(distDir)
     ]
     production: [
-      f.template(engine: 'dust', views: "src")
+      f.handlebars(root: "src")
       f.writeFile(distDir)
     ]
 

@@ -5,7 +5,7 @@ Projmate CoffeeScript and Backbone example debuggable through source maps.
 * CommonJS in the browser
 * CoffeeScript template and scripts
 * Less CSS
-* DustJs files (layouts, partials)
+* Handlebars templates with layouts, partials
 * Generates static assets, no middleware needed
 * Runs on Linux, Mac and Windows
 
