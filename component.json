@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "backbone": "~1.0.0",
+    "jquery": "~1.9.1",
+    "underscore": "~1.4.4"
+  },
+  "dependencies": {
+    "backbone.marionette.tar": "http://marionettejs.com/downloads/backbone.marionette.tar.gz"
+  }
+}

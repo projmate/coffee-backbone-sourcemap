@@ -73,14 +73,20 @@ exports.project = (pm) ->
       $.rm "-f", "src/js/app_js/app.*"
 
 
-  publicFiles:
+  staticFiles:
     desc: "Copy static files"
     dev: ->
       $.cp_rf "public/*", "dist"
+      $.cp_rf "components", "dist"
+      $.cp_rf "src/img", "dist"
+      $.cp "src/favicon.ico", "dist"
 
+  components:
+    dev: (cb) ->
+      $.run "bower install -d", cb
 
   all:
     desc: "Run all tasks"
-    pre: ["clean", "app.js", "stylesheets", "pages", "publicFiles"]
+    pre: ["clean", "app.js", "stylesheets", "pages", "staticFiles"]
 
 

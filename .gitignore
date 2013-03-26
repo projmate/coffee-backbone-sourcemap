@@ -2,3 +2,4 @@
 src/js/app_js/app.*
 dist/
 npm-debug.log
+components/
