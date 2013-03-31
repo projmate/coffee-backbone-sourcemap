@@ -33,10 +33,8 @@ already useful. Much of this project's magic happens in [Projfile](Projfile.coff
 
 ## Debugging
 
-As of this writing, Chrome 26.0.1410.40 beta works well with source maps.
-The stable version does not reliably stop on breakpoints. WebStorm needs
-hacks to work and I don't want to waste time on a closed-source product. They
-need to fix their source map integration.
+Chrome 26.0+ works best for debugging with source maps. Older versions did
+not reliably stop on breakpoints.
 
 *   From terminal
 
