@@ -1,5 +1,6 @@
 .idea
 src/js/app_js/app.*
 dist/
+!jam/**/dist
 npm-debug.log
 components/
