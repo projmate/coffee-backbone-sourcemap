@@ -4,7 +4,7 @@ AppView = require("./views/app")
 
 exports.run = ->
   account = new Account
-  view = new AppView(model: account)
-  view.renderTo $("#app-wrapper")
+  view = new AppView(model: account, el: '#app-wrapper')
+  view.render()
 
-  console.log hello("world!")
+  console.log hello("worl!")

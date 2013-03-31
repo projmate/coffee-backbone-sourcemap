@@ -1,0 +1,23 @@
+{
+  "name": "coffee-backbone-sourcemap",
+  "version": "0.0.0",
+  "description": "Projmate CoffeeScript and Backbone example debuggable through source maps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/projmate/coffee-backbone-sourcemap.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "ebfcf06e6819e97aced615f3b9c6fd258079c1f9",
+   "jam": {
+      "packageDir": "dist/js/vendor",
+      "dependencies": {
+        "backbone": "~1.0"
+      }
+    }
+}

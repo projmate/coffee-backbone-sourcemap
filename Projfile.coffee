@@ -1,3 +1,7 @@
+exports.config =
+  log:
+    level: 'info'
+
 # Projmate project file.
 #
 # To see tasks
@@ -8,28 +12,26 @@ exports.project = (pm) ->
   f = pm.filters()
   $ = pm.shell()
 
-  # Change asset filename dir to "dist"
-  distDir = _filename: { replace: [/^src/, "dist"] }
+  # Change asset filename dir to 'dist'
+  distDir = _filename: { replace: [/^src/, 'dist'] }
 
   # Add javascript header filter
-  addJsHeader = f.addHeader filename: "_res/copyright.js"
+  addJsHeader = f.addHeader filename: '_res/copyright.js'
 
 
-  "app.js":
-    description: "Creates app.js CommonJS module from src/app_js"
+  'app.js':
+    description: 'Creates app.js CommonJS module from src/app_js'
     files:
-      include: ["src/js/app_js/**/*.coffee", "src/js/app_js/**/*.js"]
+      include: ['src/js/app_js/**/*.coffee', 'src/js/app_js/**/*.js']
     development: [
-      # sourceMap is on by default
-      f.coffee(bare: true)
-      f.commonJsify(baseDir: "src/js/app_js", packageName: "app", filename: "src/js/app.js")
+      f.coffee(bare: true, sourceMap: true)
+      f.commonJs(baseDir: 'src/js/app_js', packageName: 'app', filename: 'src/js/app.js', sourceMap: true, sourceRoot: '/src/js/app_js')
       f.writeFile(distDir)
     ]
     production: [
-      # sourceMap is off by default in production
       f.coffee(bare: true)
-      # file isn't written at this step, the writeFile filter replaces "src" with "dist"
-      f.commonJsify(baseDir: "src/js/app_js", packageName: "app", filename: "src/js/app.js")
+      # file isn't written at this step, the writeFile filter replaces 'src' with 'dist'
+      f.commonJs(baseDir: 'src/js/app_js', packageName: 'app', filename: 'src/js/app.js')
       f.uglify
       addJsHeader
       f.writeFile(distDir)
@@ -37,10 +39,10 @@ exports.project = (pm) ->
 
 
   stylesheets:
-    desc: "Compile less files"
+    desc: 'Compile less files'
     files:
-      include: "src/css/style.less"         # only compile this stylesheet
-      watch: ["src/css/**/*.less"]          # rebuild on any file change though
+      include: 'src/css/style.less'         # only compile this stylesheet
+    watch: ['src/css/**/*.less']            # rebuild on any file change though
     dev: [
       f.less
       f.writeFile(distDir)
@@ -53,34 +55,39 @@ exports.project = (pm) ->
 
 
   pages:
-    desc: "Compiles Handlebars templates to HTML"
-    files: ["src/**/*.hbs", "!src/**/_*.hbs"]
+    desc: 'Compiles Handlebars templates to HTML'
+    files: ['src/**/*.hbs', '!src/**/_*.hbs']
     development: [
-      f.handlebars(root: "src")
+      f.handlebars(root: 'src')
       f.liveReload
       f.writeFile(distDir)
     ]
     production: [
-      f.handlebars(root: "src")
+      f.handlebars(root: 'src')
       f.writeFile(distDir)
     ]
 
 
   clean:
-    desc: "Removes generated files"
+    desc: 'Removes generated files'
     dev: ->
-      $.rm_rf "dist"
-      $.rm "-f", "src/js/app_js/app.*"
+      $.rm_rf 'dist'
+      $.rm '-f', 'src/js/app_js/app.*'
 
 
-  publicFiles:
-    desc: "Copy static files"
+  staticFiles:
+    desc: 'Copy static files'
     dev: ->
-      $.cp_rf "public/*", "dist"
+      $.cp_rf 'src/img', 'dist'
+      $.cp 'src/favicon.ico', 'dist'
+      $.rm_rf 'dist/js/vendor'
+      $.cp_rf 'jam/*', 'dist/js/vendor'
 
+  components:
+    dev: (cb) ->
+      $.run 'bower install -d', cb
 
   all:
-    desc: "Run all tasks"
-    pre: ["clean", "app.js", "stylesheets", "pages", "publicFiles"]
-
+    desc: 'Run all tasks'
+    pre: ['clean', 'app.js', 'stylesheets', 'pages', 'staticFiles']
 
