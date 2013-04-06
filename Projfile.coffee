@@ -1,6 +1,8 @@
+# Supress debug logs
 exports.config =
   log:
     level: 'info'
+
 
 # Projmate project file.
 #
@@ -12,6 +14,8 @@ exports.project = (pm) ->
   f = pm.filters()
   $ = pm.shell()
 
+  # ==== Filters process Assets
+
   # Change asset filename dir to 'dist'
   distDir = _filename: { replace: [/^src/, 'dist'] }
 
@@ -19,10 +23,14 @@ exports.project = (pm) ->
   addJsHeader = f.addHeader filename: '_res/copyright.js'
 
 
+  # ==== Pipelines user Filters
+
+
+  # ==== Tasks uses Pipelines
+
   'app.js':
     description: 'Creates app.js CommonJS module from src/app_js'
-    files:
-      include: ['src/js/app_js/**/*.coffee', 'src/js/app_js/**/*.js']
+    files: ['src/js/app_js/**/*.coffee', 'src/js/app_js/**/*.js']
     development: [
       f.coffee(bare: true, sourceMap: true)
       f.commonJs(baseDir: 'src/js/app_js', packageName: 'app', filename: 'src/js/app.js', sourceMap: true, sourceRoot: '/src/js/app_js')
@@ -37,11 +45,9 @@ exports.project = (pm) ->
       f.writeFile(distDir)
     ]
 
-
   stylesheets:
     desc: 'Compile less files'
-    files:
-      include: 'src/css/style.less'         # only compile this stylesheet
+    files: 'src/css/style.less'             # only compile this stylesheet
     watch: ['src/css/**/*.less']            # rebuild on any file change though
     dev: [
       f.less
@@ -52,7 +58,6 @@ exports.project = (pm) ->
       addJsHeader
       f.writeFile(distDir)
     ]
-
 
   pages:
     desc: 'Compiles Handlebars templates to HTML'
