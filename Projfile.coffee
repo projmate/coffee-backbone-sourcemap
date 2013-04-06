@@ -4,15 +4,8 @@ exports.config =
     level: 'info'
 
 
-# Projmate project file.
-#
-# To see tasks
-#
-#     pm run
-#
 exports.project = (pm) ->
-  f = pm.filters()
-  $ = pm.shell()
+  {f, $} = pm
 
   # ==== Filters process Assets
 
@@ -23,23 +16,22 @@ exports.project = (pm) ->
   addJsHeader = f.addHeader filename: '_res/copyright.js'
 
 
-  # ==== Pipelines user Filters
+  # ==== Pipelines use Filters
 
 
-  # ==== Tasks uses Pipelines
+  # ==== Tasks use Pipelines
 
   'app.js':
     description: 'Creates app.js CommonJS module from src/app_js'
     files: ['src/js/app_js/**/*.coffee', 'src/js/app_js/**/*.js']
     development: [
       f.coffee(bare: true, sourceMap: true)
-      f.commonJs(baseDir: 'src/js/app_js', packageName: 'app', filename: 'src/js/app.js', sourceMap: true, sourceRoot: '/src/js/app_js')
+      f.commonJs(root: 'src/js/app_js', name: 'app', filename: 'src/js/app.js', sourceMap: true, sourceRoot: '/src/js/app_js')
       f.writeFile(distDir)
     ]
     production: [
       f.coffee(bare: true)
-      # file isn't written at this step, the writeFile filter replaces 'src' with 'dist'
-      f.commonJs(baseDir: 'src/js/app_js', packageName: 'app', filename: 'src/js/app.js')
+      f.commonJs(root: 'src/js/app_js', name: 'app', filename: 'src/js/app.js')
       f.uglify
       addJsHeader
       f.writeFile(distDir)
@@ -95,4 +87,3 @@ exports.project = (pm) ->
   all:
     desc: 'Run all tasks'
     pre: ['clean', 'app.js', 'stylesheets', 'pages', 'staticFiles']
-
