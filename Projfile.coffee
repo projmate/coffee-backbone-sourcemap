@@ -75,10 +75,10 @@ exports.project = (pm) ->
   staticFiles:
     desc: 'Copy static files'
     dev: ->
+      $.mkdir_p 'dist/js'
+      $.cp_rf 'src/js/vendor', 'dist/js'
       $.cp_rf 'src/img', 'dist'
       $.cp 'src/favicon.ico', 'dist'
-      $.rm_rf 'dist/js/vendor'
-      $.cp_rf 'jam/*', 'dist/js/vendor'
 
   components:
     dev: (cb) ->

@@ -1,27 +1,19 @@
-Funcd = require('./funcd')
+class View extends Giraffe.View
 
-class View extends Backbone.View
-
-  renderTemplate: (path, args...) ->
-    template = require(path)
-    Funcd.render(template, args...)
+  # Use funcd precompiled Coffee templates.
+  templateStrategy: ->
+    # View#template is name of template relative to templates/
+    result = Funcd.render require("app/templates/#{@template}"), @serialize()
+    console.log "RESULT"
+    result
 
   serialize: ->
     if @collection
       @collection.toJSON()
     else if @model
       @model.toJSON()
-
-  render: ->
-    if @template
-      @$el.empty().html @renderTemplate(@template, @serialize())
-    @
-
-  renderTo: ($element) ->
-    $element.empty()
-    $element.append @$el
-    @render()
-
+    else
+      @
 
 module.exports = View
 

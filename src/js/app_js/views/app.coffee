@@ -2,24 +2,20 @@ View = require("../lib/view")
 
 class AppView extends View
   id: "app"
-  template: "../templates/app"
+  template: "app"
 
   constructor: ->
     super
     @model.on 'change:balance', (model, balance) ->
       $("#label-balance").text balance
 
-  events:
-    "click #action-withdraw": "onWithdraw"
-    "click #action-deposit": "onDeposit"
-
-  onDeposit: ->
+  onClickDeposit: ->
     amount = $("#input-deposit").val()
     unless isNaN(amount)
       @model.deposit amount
       $("#input-deposit").val("")
 
-  onWithdraw: ->
+  onClickWithdraw: ->
     amount = $("#input-withdraw").val()
     unless isNaN(amount)
       @model.withdraw amount

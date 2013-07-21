@@ -1,11 +1,11 @@
-module.exports = (t, data) ->
-  t.div ->
-    t.p ->
-      t.input id:"input-deposit"
-      t.button id:"action-deposit", "deposit"
-    t.p ->
-      t.input id:"input-withdraw"
-      t.button id:"action-withdraw", "withdraw"
-    t.p ->
-      t.span "Balance: "
-      t.span id:"label-balance", data.balance
+module.exports = (data) ->
+  @div ->
+    @p ->
+      @input id:"input-deposit"
+      @button "data-gf-click":"onClickDeposit", "deposit"
+    @p ->
+      @input id:"input-withdraw"
+      @button "data-gf-click":"onClickWithdraw", "withdraw"
+    @p ->
+      @span "Balance: "
+      @span id:"label-balance", data.balance

@@ -14,10 +14,7 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "gitHead": "ebfcf06e6819e97aced615f3b9c6fd258079c1f9",
-   "jam": {
-      "packageDir": "dist/js/vendor",
-      "dependencies": {
-        "backbone": "~1.0"
-      }
-    }
+  "dependencies": {
+    "funcd": "~1.0.0-pre"
+  }
 }

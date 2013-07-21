@@ -1,24 +1,15 @@
 # coffee-backbone-sourcemap
 
-Projmate CoffeeScript and Backbone example debuggable through source maps.
+Projmate CoffeeScript and Backbone + Giraffe example.
 
 * CommonJS in the browser
-* CoffeeScript template and scripts
+* Debuggable CoffeeScript scripts and templates via  source maps
 * Less CSS
 * Handlebars templates with layouts, partials
 * Generates static assets, no middleware needed
+* Live Reload
 * Runs on Linux, Mac and Windows
 
-More documentation is forthcoming for Projmate, which is a GUI project editor
-based on likes/dislikes of tools such as Jake, Grunt and my experience deploying
-production sites. The project is several weekends of effort and the CLI is
-already useful. Much of this project's magic happens in [Projfile](Projfile.coffee).
-
-* Builds are based on environments (development, test, production)
-* Simple filters and pipelines for asset processing
-* An enhanced, cross-platform shell library based on ShellJS
-* Watch is built-in
-* LiveReload is built-in
 
 ## Installation
 
@@ -33,19 +24,20 @@ already useful. Much of this project's magic happens in [Projfile](Projfile.coff
 
 ## Debugging
 
-Chrome 26.0+ works best for debugging with source maps. Older versions did
+Chrome 27+ works best for debugging with source maps. Older versions did
 not reliably stop on breakpoints.
 
 *   From terminal
 
         cd coffee-backbone-sourcemap
+        # serve files and watch w/ livereload
         pm run all --serve --watch
 
 *   Browse [http://local.projmate.com:1080/dist](http://local.projmate.com:1080/dist) which is local.
 
 *   Open developer tools (Ctrl+Shift+I or Cmd+Opt+I) -> Sources -> Sources
 
-*   Set breakpoints in coffee files
+*   Set breakpoints in coffee files under `src/app_js`
 
 *   Refresh the page (Ctrl+r or Cmd+r) and voila!
 

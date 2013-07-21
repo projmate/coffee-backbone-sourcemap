@@ -1,3 +1,3 @@
-class Model extends Backbone.Model
+class Model extends Giraffe.Model
 
 module.exports = Model
